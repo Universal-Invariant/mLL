@@ -1,3 +1,1 @@
-edge_voices_cache.json
-__pycache__/config.cpython-313.pyc
-__pycache__/core.cpython-313.pyc
+Nothing should be ignored based on the provided file changes, as they only include source/config files (.md, .txt) and no build artifacts, dependencies, or temp files.
