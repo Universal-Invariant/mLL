@@ -1,0 +1,9 @@
+edge_voices_cache.json
+
+/__pycache__/
+/my_library/
+/mllb_workspace/
+/polyglot_sample/
+
+*.mLLb
+*.epub

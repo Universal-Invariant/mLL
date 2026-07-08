@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Polyglot Reader</title>
+
+    <CSSTEMPLATE />
+
+</head>
+
+<body>
+    <div class="top-bar">
+        <button id="prev-btn" class="btn-icon" title="Previous Language">⏮</button>
+        <span id="page-indicator" style="color: #aaa; font-size: 0.9em; min-width: 60px; text-align: center;">1 /
+            1</span>
+        <button id="next-btn" class="btn-icon" title="Next Language">⏭</button>
+        <div style="flex: 1;"></div>
+        <button id="play-btn" class="btn-primary">▶ Play</button>
+        <span class="time-display" id="time-current">0:00</span>
+        <input type="range" id="seek-bar" value="0" min="0" max="100" step="0.1" style="max-width: 200px;">
+        <span class="time-display" id="time-total">0:00</span>
+        <select id="speed-selector" title="Global Playback Speed">
+            <option value="0.25">0.25x</option>
+            <option value="0.5">0.5x</option>
+            <option value="0.75">0.75x</option>
+            <option value="1" selected>1.0x</option>
+            <option value="1.25">1.25x</option>
+        </select>
+        <button id="settings-btn" class="btn-icon" title="Settings">⚙️</button>
+    </div>
+    <div class="content-wrapper">
+        <div id="main-panel">
+            <div id="global-source" class="global-source-text"></div>
+            <div id="lang-display-area"></div>
+        </div>
+        <div id="side-panel">
+            <h2 style="margin-top:0; border-bottom: 1px solid #444; padding-bottom: 10px;">Dictionary</h2>
+            <div id="dict-container" class="dict-card" style="display:none;">
+                <h1 class="dict-word" id="dict-title">Word</h1>
+                <div style="margin-bottom: 15px;">
+                    <span class="badge" id="dict-pos">POS</span>
+                    <span class="badge" id="dict-rom" style="background: #007acc;">Romaji</span>
+                </div>
+                <p style="color: #888; font-size: 0.9em; margin-bottom: 5px;">Dictionary Form (Lemma):</p>
+                <strong id="dict-lemma" style="font-size: 1.2em; display: block; margin-bottom: 15px;"></strong>
+                <p style="color: #888; font-size: 0.9em; margin-bottom: 5px;">Definition:</p>
+                <p id="dict-definition" style="font-size: 1.1em; line-height: 1.5; color: #e0e0e0; margin: 0;"></p>
+            </div>
+            <p id="dict-instruction" style="color: #666; text-align: center; margin-top: 30px;">Click any word to see
+                details.</p>
+        </div>
+    </div>
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-settings">&times;</span>
+            <h2>Reader Settings</h2>
+            <div class="setting-group"><label>Target Languages:</label>
+                <div class="checkbox-group" id="target-checks-container"></div>
+            </div>
+            <div class="setting-group"><label>Paragraph Line Spacing: <span
+                        id="line-spacing-val">3.5em</span></label><input type="range" id="line-spacing-slider" min="1.5"
+                    max="6.0" step="0.1" value="3.5"></div>
+            <div class="setting-group"><label>Main Target Font Size: <span id="main-font-val">1.2em</span></label><input
+                    type="range" id="main-font-slider" min="0.8" max="4.0" step="0.1" value="1.2"></div>
+            <div class="setting-group"><label>Source Word Font Size: <span
+                        id="source-font-val">0.6em</span></label><input type="range" id="source-font-slider" min="0.3"
+                    max="1.5" step="0.1" value="0.6"></div>
+            <div class="setting-group"><label>Romaji Font Size: <span id="rom-font-val">0.8em</span></label><input
+                    type="range" id="rom-font-slider" min="0.3" max="1.5" step="0.1" value="0.8"></div>
+            <div class="setting-group"><label>Gap (Source to Target): <span
+                        id="gap-source-val">0.1em</span></label><input type="range" id="gap-source-slider" min="0"
+                    max="1.0" step="0.05" value="0.1"></div>
+            <div class="setting-group"><label>Gap (Target to Romaji): <span
+                        id="gap-romaji-val">0.1em</span></label><input type="range" id="gap-romaji-slider" min="0"
+                    max="1.0" step="0.05" value="0.1"></div>
+            <div class="setting-group">
+                <label><input type="checkbox" id="toggle-source-sentence" checked> Show Full Source Sentence at
+                    Top</label>
+                <label><input type="checkbox" id="toggle-source-words" checked> Show Source Words Above Target
+                    Words</label>
+            </div>
+            <button id="apply-settings" class="btn-primary" style="width: 100%; padding: 12px; font-size: 1.1em;">Apply
+                & Render</button>
+        </div>
+    </div>
+    <audio id="audio-player"></audio>
+    <JSTEMPLATE />
+</body>
+
+</html>
